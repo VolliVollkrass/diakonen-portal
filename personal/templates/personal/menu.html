@@ -1,0 +1,46 @@
+{% load static %}
+<nav class="navbar shadow p-3 mb-4 navbar-expand-lg fixed-top" style="background-color:rgb(78, 40, 100);" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'start' %}"><img src="{% static 'bilder/logo Kopie.png' %}" alt="Logo" style="height: 40px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <form method="post" action="{% url 'logout' %}" class="nav-link d-flex">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link text-white p-0 m-0" style="text-decoration: none;">
+              <i class="bi bi-unlock-fill"></i>
+            </button>
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'personal' %}">Personal</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pkua' %}">PK_UA</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pe' %}">PE</a>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link">Servus {{ user.username }}</p>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}"><i class="bi bi-lock-fill"></i></a>
+          </li>
+        {% endif %}
+      </ul>
+      {% if user.is_authenticated %}
+      <form class="d-flex" method=POST action="{% url 'search_personal' %}" role="search">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Personalsuche" aria-label="Search" name="searched"/>
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</nav>

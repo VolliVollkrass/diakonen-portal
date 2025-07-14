@@ -1,0 +1,12 @@
+{% extends "personal/base.html" %}
+
+{% block title %}Neuer Einsatz{% endblock %}
+
+{% block content %}
+    <h2>Neuer Einsatz</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Speichern</button>
+    </form>
+{% endblock %}

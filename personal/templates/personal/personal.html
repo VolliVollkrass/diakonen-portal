@@ -1,0 +1,44 @@
+{% extends "personal/base.html" %}
+
+{% block title %}Alle Diakone{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+  <h2 class="mb-4">Alle Diakone</h2>
+</div>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">#</th>
+      <th scope="col">Pers.Nr.</th>
+      <th scope="col">Vorname</th>
+      <th scope="col">Nachname</th>
+      <th scope="col">Telefon</th>
+      <th scope="col">E-Mail</th>
+      <th scope="col">Einsatz</th>
+    </tr>
+  </thead>
+  {% for diakon in diakone %}
+  <tbody>
+    <tr>
+      <td>
+        <a href="{% url 'person_detail' pk=diakon.pk %}" class="text-center"><i class="bi bi-pencil-square bearbeitung"></i></a>
+      </td>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ diakon.personalnummer }}</td>
+      <td>{{ diakon.vorname }}</td>
+      <td>{{ diakon.nachname }}</td>
+      <td>{{ diakon.telefon }}</td>
+      <td>{{ diakon.email }}</td>
+      <td>
+        {% if diakon.letzter_einsatz %}
+          {{ diakon.letzter_einsatz.einsatzbezeichnung }}
+        {% endif %}
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{% endblock %}

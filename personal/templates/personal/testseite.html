@@ -1,0 +1,34 @@
+{% extends "personal/base.html" %}
+
+{% block title %}testseite{% endblock %}
+
+{% block content %}
+<h1>Testseite</h1>
+<p>Dies ist eine Testseite, um die Funktionalität zu überprüfen.</p>
+{% for diakon in diakone %}
+  <h2><a href="{% url 'person_detail' pk=diakon.pk %}">{{ diakon.vorname }} {{ diakon.nachname }}</a></h2>
+    <p>Personalnummer: {{ diakon.personalnummer }}</p>
+    <p>Adresse: {{ diakon.adresse }}</p>
+    <p>PLZ: {{ diakon.plz }}</p>
+    <p>Ort: {{ diakon.ort }}</p>
+    <p>Geburtsdatum: {{ diakon.geburtsdatum }}</p>
+    <p>Familienstand: {{ diakon.familienstand }}</p>
+    <p>Anzahl Kinder: {{ diakon.kinder }}</p>
+    <p>Besoldungsgruppe: {{ diakon.besoldung }}</p>
+    <p>Besoldungsstufe: {{ diakon.besoldungsstufe }}</p>
+    <p>Telefon: {{ diakon.telefon }}</p>
+    <p>E-Mail: {{ diakon.email }}</p>
+    <p>Letzter Einsatz: {% if diakon.letzter_einsatz %}
+    {{ diakon.letzter_einsatz.startdatum }}
+  {% else %}
+    Kein Einsatz
+  {% endif %} </p>
+    <hr>    
+{% endfor %}
+
+{% if diakone %}
+  <p>Es gibt {{ diakone|length }} Diakone in der Datenbank.</p>
+{% else %}
+  <p>Keine Diakone gefunden.</p>
+{% endif %}
+{% endblock %}

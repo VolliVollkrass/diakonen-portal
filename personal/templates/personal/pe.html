@@ -1,0 +1,36 @@
+{% extends "personal/base.html" %}
+
+{% block title %}PE{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+    <h2 class="mb-4">Personalentwicklung der Diakon*innen</h2>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Einsatz</th>
+      <th scope="col">Thema</th>
+      <th scope="col">Darstellung</th>
+      <th scope="col">Beschluss</th>
+      <th scope="col">Erfasser</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for pk in pe %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ pk.diakon.vorname }} {{ pk.diakon.nachname }}</td>
+      <td>{{ pk.datum }}</td>
+      <td>{{ pk.kontaktgrund }}</td>
+      <td>{{ pk.kommentar }}</td>
+      <td>{{ pk.beschluss }}</td>
+      <td>{{ pk.erfasser.name }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
