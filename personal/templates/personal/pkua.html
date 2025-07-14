@@ -12,16 +12,16 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Einsatz</th>
+      <th scope="col">Datum</th>
       <th scope="col">Thema</th>
       <th scope="col">Darstellung</th>
       <th scope="col">Beschluss</th>
       <th scope="col">Erfasser</th>
-
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    {% for pk in pkua %}
+    {% for pk in pkua_kontakt %}
     <tr>
       <th scope="row">{{ forloop.counter }}</th>
       <td>{{ pk.diakon.vorname }} {{ pk.diakon.nachname }}</td>
@@ -30,6 +30,7 @@
       <td>{{ pk.kommentar }}</td>
       <td>{{ pk.beschluss }}</td>
       <td>{{ pk.erfasser.name }}</td>
+      <th><a class="btn btn-default " href="#"><i class="bi bi-pencil bearbeitung"></i></a></th>
     </tr>
     {% endfor %}
   </tbody>
@@ -52,15 +53,15 @@
     </tr>
   </thead>
   <tbody>
-    {% for pk in pkua %}
+    {% for d in diakon %}
     <tr>
       <th scope="row">{{ forloop.counter }}</th>
-      <td>{{ pk.diakon.vorname }} {{ pk.diakon.nachname }}</td>
-      <td>{{ pk.datum }}</td>
-      <td>{{ pk.kontaktgrund }}</td>
-      <td>{{ pk.kommentar }}</td>
-      <td>{{ pk.beschluss }}</td>
-      <td>{{ pk.erfasser.name }}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
     {% endfor %}
   </tbody>

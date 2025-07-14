@@ -102,9 +102,10 @@ def neuer_einsatz(request, pk, einsatz_pk=None):
 @login_required
 def pkua(request):
     diakon = Diakon.objects.all()  # Get all diakons
-    pkua = Kontakt.objects.filter(pk_ua=True).order_by('-datum')  # Filter for PK UA contacts
+    pkua_kontakt = Kontakt.objects.filter(pk_ua=True).order_by('-datum')  # Filter for PK UA contacts
+    pkua = Pkua.objects.all()
 
-    return render(request, 'personal/pkua.html', {'diakon': diakon, 'pkua': pkua})
+    return render(request, 'personal/pkua.html', {'diakon': diakon, 'pkua_kontakt': pkua_kontakt})
 
 @login_required
 def pe(request):

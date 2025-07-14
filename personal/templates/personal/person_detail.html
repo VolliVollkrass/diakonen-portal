@@ -100,8 +100,9 @@
                             <th>Erfasser</th>
                             <th>Bearbeitungsstand</th>
                             <th>Kontaktgrund</th>
-                            <th>Kommentar</th>
-                            <th>PK_UA</th>
+                            <th>Darstellung</th>
+                            <th>PK-UA Beschluss</th>
+                            <th>PK-UA</th>
                             <th>PE</th>
                         </tr>
                     </thead>
@@ -115,6 +116,7 @@
                             <td>{{ kontakt.bearbeitungsstand }}</td>
                             <td>{{ kontakt.kontaktgrund }}</td>
                             <td><div>{% if kontakt.kommentar %}{{ kontakt.kommentar }}{% else %}Kein Kommentar{% endif %}</div></td>
+                            <td><div>Hier kommt der Beschluss rein, sobald dieser im PK-UA beschlossen worden ist. Mit einem kleinen Datum oben rechts.</div></td>
                             <td class="text-center "><div>{% if kontakt.pk_ua %}<i class="bi bi-clipboard-check "></i>{% else %}{% endif %}</div></td>
                             <td class="text-center "><div>{% if kontakt.pe %}<i class="bi bi-clipboard-check"></i>{% else %}{% endif %}</div></td>
                         </tr>

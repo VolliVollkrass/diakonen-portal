@@ -8,6 +8,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         {% if user.is_authenticated %}
+        
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'personal' %}">Personal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'pkua' %}">PK-UA</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'pe' %}">PE</a>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link border-start ps-3 ms-3 border-1 border-white">Servus {{ user.username }}</p>
+        </li>
         <li class="nav-item">
           <form method="post" action="{% url 'logout' %}" class="nav-link d-flex">
             {% csrf_token %}
@@ -16,24 +29,13 @@
             </button>
           </form>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'personal' %}">Personal</a>
-        </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'pkua' %}">PK_UA</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'pe' %}">PE</a>
-          </li>
-          <li class="nav-item">
-            <p class="nav-link">Servus {{ user.username }}</p>
-          </li>
         {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}"><i class="bi bi-lock-fill"></i></a>
           </li>
         {% endif %}
       </ul>
+
       {% if user.is_authenticated %}
       <form class="d-flex" method=POST action="{% url 'search_personal' %}" role="search">
         {% csrf_token %}
