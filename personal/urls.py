@@ -7,7 +7,6 @@ urlpatterns = [
     path('', views.start, name='start'),
     path('personal/', views.personal, name='personal'),
     path('personal/<int:pk>/', views.person_detail, name='person_detail'),
-    path('testseite/', views.testseite, name='testseite'),
     path('personal/<int:pk>/neuer_kontakt/', views.neuer_kontakt, name='neuer_kontakt'),
     path('personal/<int:pk>/edit_kontakt/<int:kontakt_pk>/', views.neuer_kontakt, name='edit_kontakt'),
     path('pkua/', views.pkua, name='pkua'),
@@ -18,5 +17,7 @@ urlpatterns = [
     path('personal/<int:pk>/neuer_einsatz/', views.neuer_einsatz, name='neuer_einsatz'),
     path('personal/<int:pk>/edit_einsatz/<int:einsatz_pk>/', views.neuer_einsatz, name='edit_einsatz'),
     path('personal/<int:pk>/generate_pdf/', views.generate_pdf, name='generate_pdf'),
-
+    path('einsatzorte/', views.einsatzorte, name='einsatzorte'),
+    path('einsatzorte/neuer_einsatzort/', views.neuer_einsatzort, name='neuer_einsatzort'),
+    path('einsatzorte/<int:pk>/edit_einsatzort', views.neuer_einsatzort, name='edit_einsatzort')
 ]

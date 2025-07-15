@@ -53,3 +53,20 @@ class EinsatzForm(forms.ModelForm):
             'umfang': forms.TextInput(attrs={'class': 'form-control'}),
 
         }
+
+class EinsatzortForm(forms.ModelForm):
+    class Meta:
+        model = Einsatzort
+        fields = ('standort_id', 'traegername', 'adresse', 'plz', 'ort', 'telefon', 'email', 'fax', 'traegerform')
+
+        widgets = {
+            'standort_id': forms.TextInput(attrs={'class': 'form-control'}),
+            'traegername': forms.TextInput(attrs={'class': 'form-control'}),
+            'adresse': forms.TextInput(attrs={'class': 'form-control'}),
+            'plz': forms.NumberInput(attrs={'class': 'form-control'}),
+            'ort': forms.TextInput(attrs={'class': 'form-control'}),
+            'telefon': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'fax': forms.TextInput(attrs={'class': 'form-control'}),
+            'traegerform': forms.Select(attrs={'class': 'form-control'}),
+        }

@@ -139,8 +139,13 @@ class Einsatzort(models.Model):
     ort = models.CharField(max_length=100, blank=True, null=True)
     telefon = models.CharField(max_length=30, blank=True, null=True)
     email = models.EmailField(max_length=100, blank=True, null=True)
-    fax = models.CharField(max_length=30, blank=True, null=True)    
+    fax = models.CharField(max_length=30, blank=True, null=True)
+    traegerform = models.CharField(max_length=20, choices=TRAEGER_CHOICES, default='ELKB')
 
+    @property
+    def letzter_diakon(self):
+        return self.einsaetze.order_by('-startdatum').first() if self.einsaetze.exists() else None
+    
     def __str__(self):
         return f"{self.traegername} ({self.standort_id})"
 

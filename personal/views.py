@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
-from .forms import KontaktForm, DiakonForm, EinsatzForm
+from .forms import KontaktForm, DiakonForm, EinsatzForm, EinsatzortForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http import FileResponse
@@ -168,3 +168,21 @@ def generate_pdf(request, pk):
 
     buf.seek(0)
     return FileResponse(buf, as_attachment=True, filename=f"diakon_{diakon.personalnummer}.pdf")
+
+@login_required
+def einsatzorte (request):
+    einsatzorte = Einsatzort.objects.all()
+
+    return render(request, 'einsatz/einsatzorte.html',{'einsatzorte': einsatzorte} )
+
+@login_required
+def neuer_einsatzort (request, pk=None):
+    einsatzort = get_object_or_404(Einsatzort, pk=pk)if pk else None
+    if request.method == 'POST':
+        form = EinsatzortForm(request.POST, instance=einsatzort)
+        if form.is_valid():
+            einsatzort = form.save(commit=True)
+            return redirect('einsatzorte')
+    else:
+        form = EinsatzortForm(instance=einsatzort)
+    return render(request, 'einsatz/neuer_einsatzort.html', {'form': form})
