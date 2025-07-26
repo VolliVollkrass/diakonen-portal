@@ -13,6 +13,10 @@ main {
     padding: 100px
 }
 
+div h2 {
+    color: rgb(151,113,173)
+}
+
 .bearbeitung {
     color: rgb(78, 40, 100);
 }
